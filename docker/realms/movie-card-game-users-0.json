@@ -1,0 +1,65 @@
+{
+  "realm" : "movie-card-game",
+  "users" : [ {
+    "id" : "43cd24d2-08e9-461a-b033-42b5df015b0f",
+    "createdTimestamp" : 1679438633726,
+    "username" : "ada-game-user-one",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "firstName" : "Ada User",
+    "lastName" : "One",
+    "credentials" : [ {
+      "id" : "befa6250-e16e-41d9-9dd0-d4a223c627fa",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1679438645216,
+      "secretData" : "{\"value\":\"t5GYAFILj6j+3afLSwjZZJdETS2g5prLRTTM100ztGY=\",\"salt\":\"tfEkgjgsv3uTuxhPR9V2YA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-movie-card-game" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "3417f0ed-05e6-49b1-a80a-547b4402ef2d",
+    "createdTimestamp" : 1679438664058,
+    "username" : "ada-game-user-two",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "firstName" : "Ada Game User",
+    "lastName" : "Two",
+    "credentials" : [ {
+      "id" : "99995628-b45e-4716-8a6b-d7ebee15228c",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1679438675091,
+      "secretData" : "{\"value\":\"HUnHq8VoOKKYKaD+MHfvXW+P+zXCDAAaGmzuP0ZwQOQ=\",\"salt\":\"3tkc/T0bK3APjzbsUfs8eg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-movie-card-game" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "30c8e2b2-49da-4b2a-9718-0148ea8c1891",
+    "createdTimestamp" : 1679438592955,
+    "username" : "service-account-game-api",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "game-api",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-movie-card-game" ],
+    "clientRoles" : {
+      "game-api" : [ "uma_protection" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}

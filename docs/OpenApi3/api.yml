@@ -1,0 +1,296 @@
+openapi: 3.0.0
+servers: []
+info:
+  description: Movie Card Game
+  version: "1.0.0"
+  title: Movie Card Game
+  contact:
+    email: maruero@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: Authentication
+    description: Obtain Oauth Token
+  - name: Game
+    description: Operations to play the game
+  - name: Health
+    description: Operation to check Readness and Liveness
+paths:
+  /heartbeat:
+    get:
+      tags:
+        - Health
+      summary: Health check operation
+      operationId: heartbeat
+      description: |
+        Check if API is UP and can start handling requests
+      responses:
+        '200':
+          description: service is up
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [UP, DOWN]
+                    example: UP
+                  message:
+                    type: string
+                    example: All good.
+        '503':
+          description: service is down
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [UP, DOWN]
+                    example: DOWN
+                  message:
+                    type: string
+                    example: Service is down.
+  /login:
+    post:
+      tags:
+        - Authentication
+      summary: authenticates user
+      operationId: authentication
+      description: |
+        Default Oauth 2.0 authentication. This is not part of the project. We are using Keycloak.
+      requestBody:
+        content:
+          application/x-www-urlencoded:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  example: game-api
+                client_secret:
+                  type: string
+                  example: JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD
+                grant_type:
+                  type: string
+                  example: password
+                scope:
+                  type: string
+                  example: email roles profile
+                username:
+                  type: string
+                  example: ada-game-user-two
+                password:
+                  type: string
+                  example: pass123
+      responses:
+        '200':
+          description: the token data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: eyJhbGciOiJSUzI1NiI
+                  expires_in:
+                    type: number
+                    example: 300
+                  refresh_expires_in:
+                    type: number
+                    example: 30000
+                  refresh_token:
+                    type: string
+                    example: eyJhbGciOiJSUzI1NiI
+                  token_type:
+                    type: string
+                    example: Bearer
+                  scope:
+                    type: string
+                    example: profile email
+        '400':
+          description: bad input parameter
+        '401':
+          description: Unauthorized
+  /game/start:
+    post:
+      tags:
+        - Game
+      summary: starts a new game
+      operationId: gameStart
+      description: Starts a new game.
+      responses:
+        '200':
+          description: new game started
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/schemas/Round'
+        '500':
+          description: 'returned when rules is not followed'
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/schemas/Error'
+        '401':
+          description: when user is not authenticated
+  /game/answer:
+    post:
+      tags:
+        - Game
+      summary: answers a game round
+      operationId: gameAnswer
+      description: Answers a game round.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                answerMovieId:
+                  type: string
+                  example: tt5789977
+      responses:
+        '200':
+          description: answer processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/schemas/Round'
+        '500':
+          description: 'returned when rules is not followed'
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/schemas/Error'
+        '401':
+          description: when user is not authenticated
+  /game/end:
+    post:
+      tags:
+        - Game
+      summary: ends a game
+      operationId: gameEnd
+      description: Ends a game.
+      responses:
+        '200':
+          description: game ended
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/schemas/GameSummary'
+        '500':
+          description: 'returned when rules is not followed'
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/schemas/Error'
+        '401':
+          description: when user is not authenticated
+  /ranking:
+    get:
+      tags:
+        - Game
+      summary: list the ranking users
+      operationId: ranking
+      responses:
+        '200':
+          description: game ended
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/schemas/User'
+
+definitions:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ada-game-user-one
+        name:
+          type: string
+          example: Ada Game User Two
+        rounds:
+          type: number
+          example: 10
+        roundsWon:
+          type: number
+          example: 7
+        points:
+          type: number
+          example: 7
+        finished:
+          type: bool
+          example: true
+
+    Round:
+      type: object
+      properties:
+        movies:
+          type: array
+          items:
+            $ref: '#/definitions/schemas/Movie'
+          example:
+            - id: tt5789976
+              title: Matrix
+              poster: 'https://www.acme-corp.com/poster.png'
+            - id: tt5789977
+              title: King Leon
+              poster: 'https://www.acme-corp.com/poster-king.png'
+        roundNumber:
+          type: number
+          example: 1
+        errorCount:
+          type: number
+          example: 0
+        pointsAccumulated:
+          type: number
+          example: 1
+        message:
+          type: string
+          example: Which movie has more points?
+    GameSummary:
+      type: object
+      properties:
+        roundNumber:
+          type: number
+          example: 1
+        errorCount:
+          type: number
+          example: 0
+        pointsAccumulated:
+          type: number
+          example: 1
+        message:
+          type: string
+          example: Which movie has more points?
+    Error:
+      type: object
+      properties:
+        errorType:
+          type: string
+          example: BusinessGameException
+        title:
+          errorMessage: string
+          example: Please check data informed.
+    Movie:
+      type: object
+      properties:
+        id:
+          type: string
+          example: tt5789976
+        title:
+          type: string
+          example: Matrix
+        poster:
+          type: string
+          format: url
+          example: 'https://www.acme-corp.com/poster.png'

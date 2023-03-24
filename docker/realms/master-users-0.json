@@ -1,0 +1,26 @@
+{
+  "realm" : "master",
+  "users" : [ {
+    "id" : "86bd8f11-f2f4-4b84-a099-3d33f43fdd18",
+    "createdTimestamp" : 1679438546088,
+    "username" : "admin",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "credentials" : [ {
+      "id" : "45e0c6c0-2a99-4748-b66a-25061cb22ef6",
+      "type" : "password",
+      "createdDate" : 1679438546284,
+      "secretData" : "{\"value\":\"fkGuDSq2MsKnaBurGcGE/h/QOwi7HnBd7EE+5CyBM28=\",\"salt\":\"3iOZ3uu1Sx9B8OsMjUXHAw==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-master", "admin" ],
+    "clientRoles" : {
+      "movie-card-game-realm" : [ "view-identity-providers", "manage-realm", "manage-identity-providers", "view-authorization", "view-users", "manage-users", "create-client", "query-users", "view-clients", "manage-authorization", "manage-clients", "query-clients", "manage-events", "query-realms", "query-groups", "view-realm", "view-events" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}

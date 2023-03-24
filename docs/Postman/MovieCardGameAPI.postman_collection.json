@@ -1,0 +1,1897 @@
+{
+	"info": {
+		"_postman_id": "97f8cf15-2428-45fb-a584-1f46867dd7eb",
+		"name": "Movie Card Game API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1720213"
+	},
+	"item": [
+		{
+			"name": "Examples",
+			"item": [
+				{
+					"name": "/heartbeat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/ranking/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"ranking",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.globals.set(\"TOKEN\", jsonData.access_token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "game-api",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "email roles profile",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ada-game-user-two",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pass123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+							"host": [
+								"{{HOST_LOGIN}}"
+							],
+							"path": [
+								"realms",
+								"movie-card-game",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User One",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "game-api",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "email roles profile",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "ada-game-user-one",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "pass123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+									"host": [
+										"{{HOST_LOGIN}}"
+									],
+									"path": [
+										"realms",
+										"movie-card-game",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KEYCLOAK_LOCALE=; Version=1; Comment=Expiring cookie; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/realms/movie-card-game/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KC_RESTART=; Version=1; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/realms/movie-card-game/; HttpOnly"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "2178"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0WDBHT1YxSmtWeElic2RZRXdyQWcwM0phX1JzNk15c0ZwYVNHeXYycFNZIn0.eyJleHAiOjE2Nzk1MjU3ODYsImlhdCI6MTY3OTUyNTQ4NiwianRpIjoiNmIwZTAwMzEtMmI0My00YjY1LWJiYTMtOTFhOGVkMDdkNDM3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgzL3JlYWxtcy9tb3ZpZS1jYXJkLWdhbWUiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiNzcyMzM1ZjktM2JjYy00MGE4LWEwMDUtMDY0YjQxZmFmNWEyIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZ2FtZS1hcGkiLCJzZXNzaW9uX3N0YXRlIjoiN2E5YWI4ZTgtY2I5Ni00YWUzLWJhYjMtNjcwNGIyM2YzYWEyIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLW1vdmllLWNhcmQtZ2FtZSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI3YTlhYjhlOC1jYjk2LTRhZTMtYmFiMy02NzA0YjIzZjNhYTIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInJvbGVzIjpbIlBMQVlFUiJdLCJuYW1lIjoiQWRhIEdhbWUgVXNlciBUd28iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZGEtZ2FtZS11c2VyLXR3byIsImdpdmVuX25hbWUiOiJBZGEgR2FtZSBVc2VyIiwiZmFtaWx5X25hbWUiOiJUd28ifQ.lkEzYI-Zh-2lPWPeKSEuiwzZV18gtKLZTanYqwyQYm6hO1El8Ic3I4rO68fkWAnWXCGM_L0jfeAF2uT7sYRIX7UmZ09tvthT0Q4qBYifLaAD8RwmZ7PaSbRrNawC0kCnHO-CAHWppAR_wNR-vzSsvNIAdzjJnVpwvIlKZMPo3slxqzk1cVRr1xHKEZvA3SXCB3RHyqOhtzS6_0cQSbzPVw_nj1NnUgq-QFEnpK1CQl__EEdEfQ_2VxPNoBJnGiFApWhvMMeXUWsdP-oxzRBDBiCV4TIRZCLM4DfdbldPVGrCdco7LnBL-hfaKS-HiPQjVVRXNkf-tAZhaP9CWhIhYA\",\n    \"expires_in\": 300,\n    \"refresh_expires_in\": 1800,\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI2YTMyMmMxZC03MzA4LTRkNzYtYTM2OC05YmI2NzAyNGFhMzMifQ.eyJleHAiOjE2Nzk1MjcyODYsImlhdCI6MTY3OTUyNTQ4NiwianRpIjoiOWZjMTdmYmQtMjYwMS00OGU1LTlmNzAtZGVkZmI3MWJiMTJlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgzL3JlYWxtcy9tb3ZpZS1jYXJkLWdhbWUiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwODMvcmVhbG1zL21vdmllLWNhcmQtZ2FtZSIsInN1YiI6Ijc3MjMzNWY5LTNiY2MtNDBhOC1hMDA1LTA2NGI0MWZhZjVhMiIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJnYW1lLWFwaSIsInNlc3Npb25fc3RhdGUiOiI3YTlhYjhlOC1jYjk2LTRhZTMtYmFiMy02NzA0YjIzZjNhYTIiLCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI3YTlhYjhlOC1jYjk2LTRhZTMtYmFiMy02NzA0YjIzZjNhYTIifQ.8UxlqewNQy_TQcvHqjwBwvVrNJCkDx3urQIDrHcRZLQ\",\n    \"token_type\": \"Bearer\",\n    \"not-before-policy\": 0,\n    \"session_state\": \"7a9ab8e8-cb96-4ae3-bab3-6704b23f3aa2\",\n    \"scope\": \"profile email\"\n}"
+						},
+						{
+							"name": "User Two",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "game-api",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "email roles profile",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "ada-game-user-two",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "pass123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+									"host": [
+										"{{HOST_LOGIN}}"
+									],
+									"path": [
+										"realms",
+										"movie-card-game",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KEYCLOAK_LOCALE=; Version=1; Comment=Expiring cookie; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/realms/movie-card-game/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KC_RESTART=; Version=1; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/realms/movie-card-game/; HttpOnly"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "2178"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0WDBHT1YxSmtWeElic2RZRXdyQWcwM0phX1JzNk15c0ZwYVNHeXYycFNZIn0.eyJleHAiOjE2Nzk1MjU3ODYsImlhdCI6MTY3OTUyNTQ4NiwianRpIjoiNmIwZTAwMzEtMmI0My00YjY1LWJiYTMtOTFhOGVkMDdkNDM3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgzL3JlYWxtcy9tb3ZpZS1jYXJkLWdhbWUiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiNzcyMzM1ZjktM2JjYy00MGE4LWEwMDUtMDY0YjQxZmFmNWEyIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZ2FtZS1hcGkiLCJzZXNzaW9uX3N0YXRlIjoiN2E5YWI4ZTgtY2I5Ni00YWUzLWJhYjMtNjcwNGIyM2YzYWEyIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLW1vdmllLWNhcmQtZ2FtZSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI3YTlhYjhlOC1jYjk2LTRhZTMtYmFiMy02NzA0YjIzZjNhYTIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInJvbGVzIjpbIlBMQVlFUiJdLCJuYW1lIjoiQWRhIEdhbWUgVXNlciBUd28iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZGEtZ2FtZS11c2VyLXR3byIsImdpdmVuX25hbWUiOiJBZGEgR2FtZSBVc2VyIiwiZmFtaWx5X25hbWUiOiJUd28ifQ.lkEzYI-Zh-2lPWPeKSEuiwzZV18gtKLZTanYqwyQYm6hO1El8Ic3I4rO68fkWAnWXCGM_L0jfeAF2uT7sYRIX7UmZ09tvthT0Q4qBYifLaAD8RwmZ7PaSbRrNawC0kCnHO-CAHWppAR_wNR-vzSsvNIAdzjJnVpwvIlKZMPo3slxqzk1cVRr1xHKEZvA3SXCB3RHyqOhtzS6_0cQSbzPVw_nj1NnUgq-QFEnpK1CQl__EEdEfQ_2VxPNoBJnGiFApWhvMMeXUWsdP-oxzRBDBiCV4TIRZCLM4DfdbldPVGrCdco7LnBL-hfaKS-HiPQjVVRXNkf-tAZhaP9CWhIhYA\",\n    \"expires_in\": 300,\n    \"refresh_expires_in\": 1800,\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI2YTMyMmMxZC03MzA4LTRkNzYtYTM2OC05YmI2NzAyNGFhMzMifQ.eyJleHAiOjE2Nzk1MjcyODYsImlhdCI6MTY3OTUyNTQ4NiwianRpIjoiOWZjMTdmYmQtMjYwMS00OGU1LTlmNzAtZGVkZmI3MWJiMTJlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgzL3JlYWxtcy9tb3ZpZS1jYXJkLWdhbWUiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwODMvcmVhbG1zL21vdmllLWNhcmQtZ2FtZSIsInN1YiI6Ijc3MjMzNWY5LTNiY2MtNDBhOC1hMDA1LTA2NGI0MWZhZjVhMiIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJnYW1lLWFwaSIsInNlc3Npb25fc3RhdGUiOiI3YTlhYjhlOC1jYjk2LTRhZTMtYmFiMy02NzA0YjIzZjNhYTIiLCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI3YTlhYjhlOC1jYjk2LTRhZTMtYmFiMy02NzA0YjIzZjNhYTIifQ.8UxlqewNQy_TQcvHqjwBwvVrNJCkDx3urQIDrHcRZLQ\",\n    \"token_type\": \"Bearer\",\n    \"not-before-policy\": 0,\n    \"session_state\": \"7a9ab8e8-cb96-4ae3-bab3-6704b23f3aa2\",\n    \"scope\": \"profile email\"\n}"
+						},
+						{
+							"name": "User Invalid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "game-api",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "email roles profile",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "ada-game-user-invalid",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "pass123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+									"host": [
+										"{{HOST_LOGIN}}"
+									],
+									"path": [
+										"realms",
+										"movie-card-game",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KEYCLOAK_LOCALE=; Version=1; Comment=Expiring cookie; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/realms/movie-card-game/; HttpOnly"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "KC_RESTART=; Version=1; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Max-Age=0; Path=/realms/movie-card-game/; HttpOnly"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "2178"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI0WDBHT1YxSmtWeElic2RZRXdyQWcwM0phX1JzNk15c0ZwYVNHeXYycFNZIn0.eyJleHAiOjE2Nzk1MjU3ODYsImlhdCI6MTY3OTUyNTQ4NiwianRpIjoiNmIwZTAwMzEtMmI0My00YjY1LWJiYTMtOTFhOGVkMDdkNDM3IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgzL3JlYWxtcy9tb3ZpZS1jYXJkLWdhbWUiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiNzcyMzM1ZjktM2JjYy00MGE4LWEwMDUtMDY0YjQxZmFmNWEyIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZ2FtZS1hcGkiLCJzZXNzaW9uX3N0YXRlIjoiN2E5YWI4ZTgtY2I5Ni00YWUzLWJhYjMtNjcwNGIyM2YzYWEyIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLW1vdmllLWNhcmQtZ2FtZSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI3YTlhYjhlOC1jYjk2LTRhZTMtYmFiMy02NzA0YjIzZjNhYTIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInJvbGVzIjpbIlBMQVlFUiJdLCJuYW1lIjoiQWRhIEdhbWUgVXNlciBUd28iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZGEtZ2FtZS11c2VyLXR3byIsImdpdmVuX25hbWUiOiJBZGEgR2FtZSBVc2VyIiwiZmFtaWx5X25hbWUiOiJUd28ifQ.lkEzYI-Zh-2lPWPeKSEuiwzZV18gtKLZTanYqwyQYm6hO1El8Ic3I4rO68fkWAnWXCGM_L0jfeAF2uT7sYRIX7UmZ09tvthT0Q4qBYifLaAD8RwmZ7PaSbRrNawC0kCnHO-CAHWppAR_wNR-vzSsvNIAdzjJnVpwvIlKZMPo3slxqzk1cVRr1xHKEZvA3SXCB3RHyqOhtzS6_0cQSbzPVw_nj1NnUgq-QFEnpK1CQl__EEdEfQ_2VxPNoBJnGiFApWhvMMeXUWsdP-oxzRBDBiCV4TIRZCLM4DfdbldPVGrCdco7LnBL-hfaKS-HiPQjVVRXNkf-tAZhaP9CWhIhYA\",\n    \"expires_in\": 300,\n    \"refresh_expires_in\": 1800,\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI2YTMyMmMxZC03MzA4LTRkNzYtYTM2OC05YmI2NzAyNGFhMzMifQ.eyJleHAiOjE2Nzk1MjcyODYsImlhdCI6MTY3OTUyNTQ4NiwianRpIjoiOWZjMTdmYmQtMjYwMS00OGU1LTlmNzAtZGVkZmI3MWJiMTJlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgzL3JlYWxtcy9tb3ZpZS1jYXJkLWdhbWUiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwODMvcmVhbG1zL21vdmllLWNhcmQtZ2FtZSIsInN1YiI6Ijc3MjMzNWY5LTNiY2MtNDBhOC1hMDA1LTA2NGI0MWZhZjVhMiIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJnYW1lLWFwaSIsInNlc3Npb25fc3RhdGUiOiI3YTlhYjhlOC1jYjk2LTRhZTMtYmFiMy02NzA0YjIzZjNhYTIiLCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI3YTlhYjhlOC1jYjk2LTRhZTMtYmFiMy02NzA0YjIzZjNhYTIifQ.8UxlqewNQy_TQcvHqjwBwvVrNJCkDx3urQIDrHcRZLQ\",\n    \"token_type\": \"Bearer\",\n    \"not-before-policy\": 0,\n    \"session_state\": \"7a9ab8e8-cb96-4ae3-bab3-6704b23f3aa2\",\n    \"scope\": \"profile email\"\n}"
+						},
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "game-api",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "email roles profile",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "ada-game-user-two",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "pass123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+									"host": [
+										"{{HOST_LOGIN}}"
+									],
+									"path": [
+										"realms",
+										"movie-card-game",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "72"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"invalid_grant\",\n    \"error_description\": \"Invalid user credentials\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/start",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/start",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/answer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answerMovieId\": \"{{MOVIE_ID}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/answer",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/end",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/end",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"end"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/ranking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/ranking/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"ranking",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check answer without start",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.globals.set(\"TOKEN\", jsonData.access_token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "game-api",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "email roles profile",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ada-game-user-two",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pass123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+							"host": [
+								"{{HOST_LOGIN}}"
+							],
+							"path": [
+								"realms",
+								"movie-card-game",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/answer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answerMovieId\": \"{{MOVIE_ID}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/answer",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check end without start",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.globals.set(\"TOKEN\", jsonData.access_token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "game-api",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "email roles profile",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ada-game-user-two",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pass123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+							"host": [
+								"{{HOST_LOGIN}}"
+							],
+							"path": [
+								"realms",
+								"movie-card-game",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/end",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/end",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"end"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check duplicated start",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.globals.set(\"TOKEN\", jsonData.access_token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "game-api",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "email roles profile",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ada-game-user-two",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pass123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+							"host": [
+								"{{HOST_LOGIN}}"
+							],
+							"path": [
+								"realms",
+								"movie-card-game",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/start",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/start",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/start duplicated",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/start",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/end",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/end",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"end"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check permitions",
+			"item": [
+				{
+					"name": "/start",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/start",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/answer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answerMovieId\": \"{{MOVIE_ID}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/answer",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/end",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/end",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"end"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/ranking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/ranking/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"ranking",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check ranking",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.globals.set(\"TOKEN\", jsonData.access_token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "game-api",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "email roles profile",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ada-game-user-one",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pass123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+							"host": [
+								"{{HOST_LOGIN}}"
+							],
+							"path": [
+								"realms",
+								"movie-card-game",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/start",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/start",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/answer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"if (jsonData.errorCount < 3){\r",
+									"    postman.setNextRequest(\"/answer\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answerMovieId\": \"{{MOVIE_ID}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/answer",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/login User Two",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.globals.set(\"TOKEN\", jsonData.access_token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "game-api",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "JuOnoY7RnQZAluOpHsiw8xwiZ0MHKKFD",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "email roles profile",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ada-game-user-two",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pass123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST_LOGIN}}/realms/movie-card-game/protocol/openid-connect/token",
+							"host": [
+								"{{HOST_LOGIN}}"
+							],
+							"path": [
+								"realms",
+								"movie-card-game",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/start User Two",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/start",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/answer User Two",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"if (jsonData.movies && jsonData.movies[0]){\r",
+									"    postman.setEnvironmentVariable(\"MOVIE_ID\", jsonData.movies[0].id);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"if (jsonData.errorCount < 3){\r",
+									"    postman.setNextRequest(\"/answer User Two\");\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answerMovieId\": \"{{MOVIE_ID}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/game/answer",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"game",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/ranking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/ranking/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"ranking",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "http://localhost:8081",
+			"type": "string"
+		},
+		{
+			"key": "HOST_LOGIN",
+			"value": "http://localhost:8083",
+			"type": "string"
+		}
+	]
+}
