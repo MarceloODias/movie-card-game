@@ -32,9 +32,9 @@ This is the benefit of following the DIP principle properly.
 ### Authentication ###
 
 In order to not reinvent the wheel, we are using Keycloak as authentication provider.
-In real world scenario probably is applied Authentication Provider as Cognito or Firebase. 
-it's importSo, it's important to guarantee that the project follows the standards for security.
-This prevents, surprises when APIs are deployed to production for the first time. 
+In real world scenario, usually is used Authentication services from big provider as Cognito or Firebase. 
+So, it's important to guarantee that the project follows the standards for security.
+This helps to prevent surprises when APIs are deployed to production for the first time. 
 
 If needed, can access http://localhost:8083/ to change configurations or register new users.
 The admin credentials is `admin/admin`. The realm used in this project is named as
