@@ -1,6 +1,6 @@
 # Movie Card Game #
 
-This project was created as part of a challenge for ADA opportunity.
+This project was created as part of a challenge for ADA.
 
 ### Project Modules ###
 
